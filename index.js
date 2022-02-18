@@ -2,6 +2,8 @@
 /* 🚀🚀🚀🤓 Task 1: 🤓🚀🚀🚀 
 Study the code below and explain in your own words why nested function can access the variable internal. */
 
+const { Scope } = require("@babel/traverse");
+
 const external = "I'm outside the function";
 
 function myFunction() {
@@ -17,7 +19,7 @@ myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
-
+// nestedFunction can access the variable internal because it is outside of its Scope. internal exists in the functional scope of myFunction and allows nestedFunction to reach upward and grab it.
 
 
 
@@ -28,11 +30,14 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
+function summation(number) {
+  let sum = 0;
+  for(let i = 0; i <= number; i++){
+    sum += i;
   }
- 
+return sum;
+  }
+ console.log(summation(4))
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
 // Given this zoo data from around the United States, follow the instructions below. Use the specific array methods in the requests below to solve the problems.
@@ -56,8 +61,10 @@ const zooAnimals = [
   displayNames will be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function animalNames(array){
+    const displayNames = [];
+    array.forEach(item => displayNames.push(`name: ${item.animal_name}, scientific: ${item.scientific_name}`));
+    return displayNames;
   }
   
 
@@ -67,8 +74,9 @@ const zooAnimals = [
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowerCaseNames(array){
+    const lowCase = array.map(item => item.animal_name.toLowerCase());
+    return lowCase;
   }
   
   
